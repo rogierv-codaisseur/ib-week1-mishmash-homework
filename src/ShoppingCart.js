@@ -8,7 +8,10 @@ class ShoppingCart {
   }
 
   addItem(itemName, quantity, price) {
-    this.items = [...this.items, { name: itemName, quantity, pricePerUnit: price }]
+    this.items = [
+      ...this.items,
+      { name: itemName, quantity, pricePerUnit: price }
+    ];
   }
 
   clear() {
@@ -16,10 +19,10 @@ class ShoppingCart {
   }
 
   total() {
-    return this.items.reduce((acc, inc) => {
-      return acc += inc.quantity * inc.pricePerUnit
-    }, 0)
+    return this.items.reduce((totalValue, item) => {
+      return (totalValue += item.quantity * item.pricePerUnit);
+    }, 0);
   }
 }
 
-module.exports = ShoppingCart
+module.exports = ShoppingCart;

@@ -10,7 +10,7 @@ const addSomePromises = somePromise => {
 
 const promiseToGiveItBackLater = value => {
   return new Promise(resolve => {
-    giveItBackLater(value, input => input)
+    giveItBackLater(value, input => input);
     resolve(value);
   });
 };
