@@ -1,31 +1,18 @@
 const giveItBackLater = (value, callback) => {
-  setTimeout(() => callback(value), 100);
-}
+  setTimeout(() => callback(value), 42);
+};
 
 const addSomePromises = somePromise => {
-  somePromise
-    .then(promise => promise)
-    .then(result = new Promise((resolve, reject) => {
-      if (condition) {
-        resolve();
-      } else {
-        reject();
-      }
-    }))
-}
+  return somePromise
+    .then(value => value.repeat(2))
+    .catch(value => value.repeat(3));
+};
 
 const promiseToGiveItBackLater = value => {
   return new Promise(resolve => {
-    giveItBackLater(value, input => { console.log(input) })
+    giveItBackLater(value, input => input)
     resolve(value);
   });
-}
+};
 
-module.exports = { giveItBackLater, addSomePromises, promiseToGiveItBackLater }
-
-
-// Calling addSomePromises(somePromise) should chain one or more promises to the somePromise and return the last one. Your code should add both a fulfillment handler and a rejection handler.
-
-// When somePromise resolves with a string, for example "foo", then the returned promise should resolve with a string "foofoo".
-// When somePromise is rejected with a string, for example "bar", then the returned promise should resolve with "barbarbar".
-// So, your fulfillment handler should double the string and the rejection handler should triple the string. The testing code will reject or resolve the provided somePromise with a string value, and inspect what your returned promise resolves with.
+module.exports = { giveItBackLater, addSomePromises, promiseToGiveItBackLater };
